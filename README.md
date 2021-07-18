@@ -82,7 +82,7 @@ Locale database configurations for mongoDB Server. All configuration values will
 
 Microservice endpoints secured. Before sending requests, JWT needs to be add as a bearer token to the header parameters.
 
-####Credentials
+#### Credentials
 Default admin user is; <b>admin</b>, password: <b>123456</b>
 
 ```
