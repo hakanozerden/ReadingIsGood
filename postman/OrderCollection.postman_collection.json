@@ -1,0 +1,495 @@
+{
+	"info": {
+		"_postman_id": "e94a8efe-215c-4f71-a9eb-05e6ce7174c8",
+		"name": "OrderCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authenticate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8991/api/auth?username=admin&password=123456",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8991",
+					"path": [
+						"api",
+						"auth"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "admin"
+						},
+						{
+							"key": "password",
+							"value": "123456"
+						}
+					]
+				},
+				"description": "Authenticate user by username and password."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Book",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYWthbiIsImlhdCI6MTYyNjU5MzM0NSwiZXhwIjoxNjI2NTk1MTQ1fQ.bmd_zNDbTURbtyKHxVq-sEE_lNOhjhY_ovJG4qFaUhs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"author\": \"Author Jack\",\r\n  \"price\": 23.50,\r\n  \"title\": \"Title of Jack's Book\",\r\n  \"unitsInStock\": 23\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8991/api/v1/book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8991",
+					"path": [
+						"api",
+						"v1",
+						"book"
+					]
+				},
+				"description": "Create new book"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYyNjU2MTQzNCwiZXhwIjoxNjI2NTYzMjM0fQ.bAIsTDi6qZc4_RleGLrup_5ueY3cOaEruRLPinsDFbQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"unitsInStock\" : 55\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8991/api/v1/book/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8991",
+					"path": [
+						"api",
+						"v1",
+						"book",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "60f35c7075300317d0982352"
+						}
+					]
+				},
+				"description": "Update book stock"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Customer",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYyNjU2MTQzNCwiZXhwIjoxNjI2NTYzMjM0fQ.bAIsTDi6qZc4_RleGLrup_5ueY3cOaEruRLPinsDFbQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"author\": \"Author Jack\",\r\n  \"price\": 23.50,\r\n  \"title\": \"Title of Jack's Book\",\r\n  \"unitsInStock\": 23\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8991/api/v1/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8991",
+					"path": [
+						"api",
+						"v1",
+						"customer"
+					]
+				},
+				"description": "Create new book"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Orders Of Customer",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYyNjU5MTA3NCwiZXhwIjoxNjI2NTkyODc0fQ.Qkf4_bOF-9RVbVkvT9EihnuhNntKngt2KdEfkZfs6is",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"author\": \"Author Jack\",\r\n  \"price\": 23.50,\r\n  \"title\": \"Title of Jack's Book\",\r\n  \"unitsInStock\": 23\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8991/api/v1/customer/orders/:customerId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8991",
+					"path": [
+						"api",
+						"v1",
+						"customer",
+						"orders",
+						":customerId"
+					],
+					"variable": [
+						{
+							"key": "customerId",
+							"value": "60f28cc1cb359a4dbb1b33b1"
+						}
+					]
+				},
+				"description": "Create new book"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYyNjU5MTA3NCwiZXhwIjoxNjI2NTkyODc0fQ.Qkf4_bOF-9RVbVkvT9EihnuhNntKngt2KdEfkZfs6is",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"bookId\": \"60f35c7075300317d0982352\",\r\n  \"customerId\": \"60f3cf6cd082017443ad7815\",\r\n  \"quantity\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8991/api/v1/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8991",
+					"path": [
+						"api",
+						"v1",
+						"order"
+					]
+				},
+				"description": "Create new book"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Order Detail By Id",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYyNjU5MTA3NCwiZXhwIjoxNjI2NTkyODc0fQ.Qkf4_bOF-9RVbVkvT9EihnuhNntKngt2KdEfkZfs6is",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"author\": \"Author Jack\",\r\n  \"price\": 23.50,\r\n  \"title\": \"Title of Jack's Book\",\r\n  \"unitsInStock\": 23\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8991/api/v1/order/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8991",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "60f3d1cb8d9dbf1acdfa86e5"
+						}
+					]
+				},
+				"description": "Create new book"
+			},
+			"response": []
+		},
+		{
+			"name": "Search Orders By Date Interval",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYyNjU5MTA3NCwiZXhwIjoxNjI2NTkyODc0fQ.Qkf4_bOF-9RVbVkvT9EihnuhNntKngt2KdEfkZfs6is",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"author\": \"Author Jack\",\r\n  \"price\": 23.50,\r\n  \"title\": \"Title of Jack's Book\",\r\n  \"unitsInStock\": 23\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8991/api/v1/order/search/:startDate/:endDate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8991",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						"search",
+						":startDate",
+						":endDate"
+					],
+					"variable": [
+						{
+							"key": "startDate",
+							"value": "2020-01-01"
+						},
+						{
+							"key": "endDate",
+							"value": "2022-01-01"
+						}
+					]
+				},
+				"description": "Create new book"
+			},
+			"response": []
+		},
+		{
+			"name": "Customer's Monthly Statistics",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYyNjU5MTA3NCwiZXhwIjoxNjI2NTkyODc0fQ.Qkf4_bOF-9RVbVkvT9EihnuhNntKngt2KdEfkZfs6is",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"author\": \"Author Jack\",\r\n  \"price\": 23.50,\r\n  \"title\": \"Title of Jack's Book\",\r\n  \"unitsInStock\": 23\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8991/api/v1/statistic",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8991",
+					"path": [
+						"api",
+						"v1",
+						"statistic"
+					]
+				},
+				"description": "Create new book"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	}
+}
